@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>PyQaver - GET Form Demo</title>
+</head>
+<body>
+<?python
+""" My Python Code Goes Here"""
+# _GET is like $_GET in PHP
+
+name = _GET("name")
+if(name):
+    print("<h1>Your Name is {}".format(name))
+else:
+    html = """
+    <form action="/">
+    <input name="name" placeholder="Enter Your Name">
+    <button>Submit</button>
+    </form>
+    """
+    print(html)
+?>
+</body>
+</html>
