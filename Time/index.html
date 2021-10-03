@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>PyQaver - POST Time Demo</title>
+<script src="req.js"></script>
+</head>
+<body>
+<h1 id="time">Press Button To Show Time</h1>
+<br>
+<input id="name" placeholder="Enter Your Name">
+<button onclick="showTime()">Show Time</button>
+<script>
+let r = new req();
+
+function showTime(){
+    let name = document.getElementById("name").value;
+    if(name.trim() == ""){
+        //alert("Enter Your Name!");
+        //return false;
+    }
+    r.send("/server.py",{
+        params: "name="+name,
+        type: "POST",
+        success:function(response){
+            document.getElementById("time").innerHTML = response;
+        }
+    })
+}
+</script>
+</body>
+</html>
