@@ -12,7 +12,7 @@ def _GET(attr):
 
 
 def _POST(attr):
-    query = "name=Samuel"
+    query = ""
     try:
         pairs = query.split("&")
         for each in pairs:
@@ -24,7 +24,7 @@ def _POST(attr):
 
 
 def _FILES(attr):
-    query = ""
+    query = "file1=.temp/244139592_193823006094185_5817327432024192851_n.jpg"
     try:
         pairs = query.split("&")
         for each in pairs:
@@ -34,17 +34,13 @@ def _FILES(attr):
         return False
     return False
 
-from time import gmtime, strftime
+import os
 
-now = strftime("%H:%M", gmtime())
+if("file1" in _FILES):
+    #image holds path of uploaded file
+    #_FILES is like $_FILES in PHP
+    image = _FILES["file1"]
 
-#_POST is like $_POST in PHP
-name = _POST("name")
-
-if(name):
-    if(name.strip() == ""):
-        print("Please Enter Your Name!")
-    else:
-        print("Hello {}, The Server Time is {}".format(name,now))
-else:
-    print("Please Enter Your Name!")
+    #Move Uploaded file from temp directory to main
+    os.rename(image,"upload.jpg")
+    print("upload.jpg")

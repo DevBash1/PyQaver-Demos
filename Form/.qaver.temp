@@ -1,6 +1,6 @@
 
 def _GET(attr):
-    query = "name=Samuel"
+    query = "name=Favour%20Bassey"
     try:
         pairs = query.split("&")
         for each in pairs:
@@ -15,13 +15,15 @@ def _GET(attr):
 # _GET is like $_GET in PHP
 
 name = _GET("name")
-if(name):
-    print("<h1>Your Name is {}".format(name))
-else:
-    html = """
+
+html = """
     <form action="/">
     <input name="name" placeholder="Enter Your Name">
     <button>Submit</button>
     </form>
     """
+
+if(name) and name.strip() != "":
+    print("<h1>Your Name is {}".format(name))
+else:
     print(html)
